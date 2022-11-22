@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="menu">
-        Icono De clinica
+        <span class="mainIcon" @click="mainStore.sideBarModal = !mainStore.sideBarModal">Icono De clinica</span>
 
         <div class="menuItems">
             <div class="item">Inicio</div>
@@ -39,16 +39,22 @@
 </template>
 
 <script setup lang="ts">
+    import { useMainStore } from '@/stores';
 
+    const mainStore = useMainStore()
 </script>
 
 <style scoped>
-    
+
     .header{
-        @apply h-[42px] flex items-center px-40 border-b border-solid border-gray-300 text-gray-600
+        @apply h-[42px] lg:flex items-center px-40 border-b border-solid border-gray-300 text-gray-600 whitespace-nowrap hidden
     }
     .menu{
-        @apply h-[64px] flex items-center px-40 text-gray-600
+        @apply h-[64px] flex items-center px-5 sm:px-20 xl:px-40 text-sm lg:text-sm xl:text-base text-gray-600 grow 
+    }
+
+    .mainIcon{
+        @apply cursor-pointer pointer-events-auto lg:pointer-events-none lg:cursor-auto
     }
 
     .contact{
@@ -84,11 +90,11 @@
     }
 
     .menuItems{
-        @apply grow flex gap-4 justify-center items-center
+        @apply grow lg:flex gap-4 justify-center items-center
     }
 
     .item{
-        @apply cursor-pointer
+        @apply cursor-pointer hidden lg:block
     }
 
     .item:hover{
